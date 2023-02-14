@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mt-5" > Add New Pet! </h1>
+
+<form method="POST" id="new_pet_form">
+    {% for field in form if field.widget.input_type != 'hidden' %}
+        <div class="form-group">
+            {{ field.label }}
+            {{ field(class="form-control") }}
+        </div>
+    {% endfor %}
+    {{ form.csrf_token }}
+    <button type="submit" class="btn btn-md btn-success mt-4">Add</button>
+</form>
+
+<a href="/">Back to Home</a>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="my-5" >
+    {{ pet.name }} the {{ pet.species }}
+</h1>
+
+<img id="pet-image" class="img-thumbnail" src="{{ pet.photo_url }}" alt="{{ pet.name }}">
+
+<div class="my-5">
+    <button class="btn btn-warning btn-md">
+        <a href="/pet/{{pet.id}}/editform">Edit</a>
+    </button>
+    <button class="btn btn-primary btn-md">
+        <a href="/">Back to Home</a>
+    </button>
+</div>
+
+
+{% endblock %}

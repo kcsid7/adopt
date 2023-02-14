@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mt-5" >Hello, world! Welcome to the Pet Shop</h1>
+
+<button class="btn btn-md btn-primary mt-3">
+    <a href="/pet/add">Add New Pet</a>
+</button>
+
+<ul class="list-group mt-5">
+    {% for pet in pets %}
+    <li class="list-group-item">
+
+        <img src="{{ pet.photo_url }}" alt="{{ pet.name }}" style="width: 200px">
+
+        <div>
+            <a href="/pet/{{ pet.id }}"> <h3>{{ pet.name }}</h3></a>
+            {% if pet.available == 'Yes' %}
+            <span class="badge rounded-pill text-bg-success">Available</span>
+            {% else %}
+            <span class="badge rounded-pill text-bg-warning">Not Available</span>
+            {% endif %}
+            <p>
+                {{ pet.notes }}
+            </p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
+
+
+

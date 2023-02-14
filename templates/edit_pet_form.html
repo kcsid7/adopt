@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mt-5">{{ pet.name }}</h1>
+
+
+
+{% if pet.photo_url %}
+<img id="pet-image" class="img-thumbnail" src="{{ pet.photo_url }}">
+{% endif %}
+
+
+<div class="mb-5">
+    <button class="btn btn-md btn-primary mt-5">
+        <a href="/pet/{{ pet.id }}">Back</a>
+    </button>
+</div>
+    
+<form action="/pet/{{ pet.id }}/edit" method="POST" id="edit_pet_form">
+    {% for field in form if field.widget.input_type != 'hidden' %}
+        <div class="form-group">
+            {{ field.label }}
+            {{ field(class="form-control") }}
+        </div>
+    {% endfor %}
+    {{ form.csrf_token }}
+    <button type="submit" class="btn btn-md btn-success mt-4">Update</button>
+</form>
+
+
+
+<button class="btn btn-md btn-danger mt-5">
+    <a href="/pet/{{ pet.id }}/delete">Delete</a>
+</button>
+ 
+
+
+{% endblock %}
